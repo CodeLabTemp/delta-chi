@@ -4,12 +4,32 @@ export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
   	extend: {
+		screens: {
+			'mobile-lg': '420px',
+			'mobile': '478px',
+			'tablet-sm': '620px',
+			'tablet': '1000px',
+			'desktop': '1440px',
+		  },
+		fontFamily: {
+			'lora': ['Lora', 'sans-serif'],
+			'merriweather': ['Merriweather', 'sans-serif'],
+			'montserrat': ['Montserrat', 'sans-serif'],
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+			'primary-red': "#CA3D31",
+			'primary-yellow': "#F1BD19",
+			'secondary-blue': "#11375C",
+			'custom-yellow': "#F5F5DC",
+			'custom-gray': "#E0E0E0",
+			'custom-black': "#333333",
+			'footer-back': "#5B6665",
+
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
