@@ -31,7 +31,7 @@ import AnnouncementsPage from "./pages/private/Announcements";
 import ManageAnnouncements from "./pages/private/admin/ManageAnnouncementsPage";
 
 
-import TestPage from "./pages/private/testpage";
+
 
 //Not logged in? You can't go to the protected routes
 const ProtectRoute = ({ children }) => {
@@ -213,15 +213,6 @@ const App = () => {
             </ProtectAdminRoute>
           }
         />
-
-        <Route
-        path="/testpage"
-        element ={
-          <ProtectRoute>
-            <TestPage />
-          </ProtectRoute>
-        }
-      />
 
       </Route>
 
