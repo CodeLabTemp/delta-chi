@@ -71,9 +71,9 @@ const MemberSideBar = () => {
         <hr className="w-full border-t border-white mt-4" />
 
         <div className="flex items-center justify-center">
-            <button onClick={logout} className="btn bg-[#11375C] text-white font-semibold mt-8 rounded-none w-40 border-none hover:shadow-lg">
+            {<button onClick={logout} className="btn bg-[#11375C] text-white font-semibold mt-8 rounded-none w-40 border-none hover:shadow-lg">
               Log Out
-            </button>
+            </button>}
         </div>
       </div>
 

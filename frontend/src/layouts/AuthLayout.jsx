@@ -21,12 +21,12 @@ const AuthLayout = () => {
     return <div>Loading...</div>;
   }
 
+
   return (
     <>
       {user && (
         <div className="flex h-screen relative">
           <MemberSideBar />
-
           <div className="flex-1 flex flex-col transition-all duration-300 p-6">
             <div className="self-start mb-4"></div>
 
@@ -35,13 +35,13 @@ const AuthLayout = () => {
                 Admin Portal
               </PortalButton>
             </div>
-
-            <AdminDashboard />
+              <AdminDashboard />
           </div>
         </div>
       )}
 
       <Outlet />
+      <Toaster />
     </>
   );
 };
