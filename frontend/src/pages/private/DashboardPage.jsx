@@ -14,7 +14,7 @@ const DashboardPage = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start p-6 bg-gray-100">
+    <div className="min-h-screen flex flex-col items-center justify-start p-6">
       <DashboardAnnouncements />
       <h1 className="text-3xl font-bold text-gray-800 mt-8">Dashboard</h1>
       <p className="text-lg text-gray-600 mt-2">

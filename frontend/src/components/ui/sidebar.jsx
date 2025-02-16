@@ -1,8 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useAuthStore } from "@/store/authStore";
 
 const MemberSideBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logout } = useAuthStore();
+  const navigate = useNavigate();
+
+  const isModOrAdmin = user.role === "admin" || user.role === "moderator";
 
   useEffect(() => {
     const handleResize = () => {
@@ -19,7 +24,6 @@ const MemberSideBar = () => {
 
   return (
     <div className="">
-      {/* Sidebar Overlay (Covers Everything When Open) */}
       {isMenuOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40 sm:hidden"
@@ -27,7 +31,6 @@ const MemberSideBar = () => {
         ></div>
       )}
 
-      {/* Sidebar (With Custom Shadow & Rounded Edge) */}
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-[#F1BD19] z-50 pt-6 transition-transform drop-shadow-[4px_4px_10px_rgba(0,0,0,0.4)] rounded-r-xl ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -52,30 +55,25 @@ const MemberSideBar = () => {
           <p className="text-sm text-[#CA3D31]">Admin</p>
         </div>
 
-        {/* Divider */}
         <hr className="w-full border-t border-white" />
 
         {/* Sidebar Links */}
         <ul className="w-full text-center space-y-4 mt-4 pb-4">
-          {["Dashboard", "Members", "Permissions", "Announcements", "Events", "Settings"].map(
-            (item) => (
-              <li key={item}>
-                <a className="block py-2 w-full hover:font-bold">{item}</a>
-              </li>
-            )
-          )}
+          <Link className="block py-2 w-full hover:font-bold" to="/dashboard">Dashboard</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/profiles">Members</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/permissions">Permissions</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/announcements">Announcements</Link>          
+          <Link className="block py-2 w-full hover:font-bold" to="/events">Events</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Settings</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Edit My Profile</Link>
         </ul>
 
-        {/* Divider */}
         <hr className="w-full border-t border-white mt-4" />
 
-        {/* Logout Button */}
         <div className="flex items-center justify-center">
-          <Link to="/login">
-            <button className="btn bg-[#11375C] text-white font-semibold mt-8 rounded-none w-40 border-none hover:shadow-lg">
+            {<button onClick={logout} className="btn bg-[#11375C] text-white font-semibold mt-8 rounded-none w-40 border-none hover:shadow-lg">
               Log Out
-            </button>
-          </Link>
+            </button>}
         </div>
       </div>
 
