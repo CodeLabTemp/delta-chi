@@ -31,8 +31,6 @@ import AnnouncementsPage from "./pages/private/Announcements";
 import ManageAnnouncements from "./pages/private/admin/ManageAnnouncementsPage";
 
 
-
-
 //Not logged in? You can't go to the protected routes
 const ProtectRoute = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore();
@@ -49,6 +47,8 @@ const ProtectRoute = ({ children }) => {
   if (user.role === "banned") {
     return <Navigate to="/account-deactivated" replace />;
   }
+
+
 
   return children;
 };

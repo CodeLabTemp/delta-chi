@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuthStore } from "@/store/authStore";
 
-const AdminSideBar = () => {
+const MemberSideBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
@@ -60,12 +60,12 @@ const AdminSideBar = () => {
         {/* Sidebar Links */}
         <ul className="w-full text-center space-y-4 mt-4 pb-4">
           <Link className="block py-2 w-full hover:font-bold" to="/dashboard">Dashboard</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/profiles">Members</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/permissions">Permissions</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/announcements">Announcements</Link>          
           <Link className="block py-2 w-full hover:font-bold" to="/events">Events</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Settings</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Edit My Profile</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Calendar</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Omega Fi</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Member Directory</Link>
+
         </ul>
 
         <hr className="w-full border-t border-white mt-4" />
@@ -77,7 +77,7 @@ const AdminSideBar = () => {
         </div>
       </div>
 
-      {/* Hamburger Icon */}
+      {/* Hamburger Icon (Only Visible When Sidebar is Closed) */}
       {!isMenuOpen && (
         <div className="fixed top-4 left-4 sm:hidden z-50">
           <button className="btn btn-ghost btn-circle" onClick={() => setIsMenuOpen(true)}>
@@ -91,4 +91,4 @@ const AdminSideBar = () => {
   );
 };
 
-export default AdminSideBar;
+export default MemberSideBar;

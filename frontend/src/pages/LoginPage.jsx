@@ -20,9 +20,14 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password, isRememberMe);
-    navigate("/dashboard");
+  
+    // Ensure user state updates before navigating
+    setTimeout(() => {
+      const { user } = useAuthStore.getState();
+        navigate("/dashboard");
+    }, 100);
   };
-
+  
   const inputVariants = {
     focus: { scale: 1.05, transition: { duration: 0.3 } },
   };
@@ -86,7 +91,6 @@ export default function LoginPage() {
             </motion.div>
           </div>
 
-          {/* Remember Me & Forgot Password on the same line */}
           <div className="flex justify-between items-center mt-2">
             <div className="flex items-center space-x-3">
               <h1 className="text-sm text-gray-600 font-montserrat">Remember Me</h1>
@@ -103,7 +107,6 @@ export default function LoginPage() {
             </Link>
           </div>
 
-          {/* Login button moved above Remember Me & Forgot Password */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <LoginButton type="submit" disabled={isLoading}>
             {isLoading ? "Loading..." : "Sign In"}

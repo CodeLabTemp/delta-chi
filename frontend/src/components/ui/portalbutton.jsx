@@ -7,7 +7,7 @@ const PortalButton = React.forwardRef(({ className, asChild = false, ...props },
   return (
     <Comp
       className={cn(
-        "w-full py-4 bg-[#CA3D31] focus:ring-2 focus:ring-[#CA3D31] font-bold font-montserrat",
+        "w-full py-4 bg-[#CA3D31] focus:ring-[#CA3D31] hover:bg-[#CA3D31] font-bold font-montserrat text-white",
         className
       )}
       ref={ref}
