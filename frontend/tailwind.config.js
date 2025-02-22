@@ -8,6 +8,7 @@ export default {
 			'mobile-lg': '420px',
 			'mobile': '478px',
 			'tablet-sm': '620px',
+			'tablet-lg': '760px',
 			'tablet': '1000px',
 			'desktop': '1440px',
 		  },
