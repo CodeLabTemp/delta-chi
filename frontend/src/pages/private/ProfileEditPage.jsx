@@ -18,7 +18,6 @@ const ProfileEditPage = () => {
   const [fileChanged,setFileChanged] = useState(true);
   const [originalProfile, setOriginalProfile] = useState(null);
   
-  console.log("user", user)
   useEffect(() => {
     fetchProfile();
   }, []);
@@ -115,8 +114,7 @@ const ProfileEditPage = () => {
       bio !== originalProfile?.bio ||
       major !== originalProfile?.major ||
       phoneNumber !== formatPhoneNumber(originalProfile?.phoneNumber) ||
-      emergencyContact !== originalProfile?.emergencyContact ||
-      fileChanged
+      emergencyContact !== originalProfile?.emergencyContact
     );
   };
 
