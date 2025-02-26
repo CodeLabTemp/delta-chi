@@ -25,7 +25,7 @@ export default function LoginPage() {
     setTimeout(() => {
       const { user } = useAuthStore.getState();
         navigate("/dashboard");
-    }, 100);
+    });
   };
   
   const inputVariants = {
