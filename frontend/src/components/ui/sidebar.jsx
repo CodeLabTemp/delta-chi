@@ -67,9 +67,9 @@ const AdminSideBar = () => {
         <ul className="w-full text-center space-y-4 mt-4 pb-4">
           <Link className="block py-2 w-full hover:font-bold" to="/dashboard">Dashboard</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profiles">Members</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/permissions">Permissions</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/announcements">Announcements</Link>          
-          <Link className="block py-2 w-full hover:font-bold" to="/events">Events</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="admin/permissions">Permissions</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="admin/announcements">Announcements</Link>          
+          <Link className="block py-2 w-full hover:font-bold" to="admin/events">Events</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Settings</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Edit My Profile</Link>
         </ul>

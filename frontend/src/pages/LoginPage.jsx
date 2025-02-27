@@ -21,13 +21,12 @@ export default function LoginPage() {
     e.preventDefault();
     await login(email, password, isRememberMe);
   
-    // Ensure user state updates before navigating
-    setTimeout(() => {
-      const { user } = useAuthStore.getState();
-        navigate("/dashboard");
-    });
+    const { user } = useAuthStore.getState();
+    if (user) {
+      navigate(user.role === "admin" ? "/admin/adminpage" : "/dashboard", { replace: true });
+    }
   };
-  
+    
   const inputVariants = {
     focus: { scale: 1.05, transition: { duration: 0.3 } },
   };
