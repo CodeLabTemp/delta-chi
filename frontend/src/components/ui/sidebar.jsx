@@ -9,6 +9,9 @@ const AdminSideBar = () => {
 
   const isModOrAdmin = user.role === "admin" || user.role === "moderator";
 
+  const roleDisplay = user.role === "admin" ? "Admin" : user.role === "moderator" ? "Moderator" : "Member";
+
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1024) {
@@ -51,8 +54,11 @@ const AdminSideBar = () => {
             alt="Profile"
             className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31]"
           />
-          <p className="mt-2 text-lg">Cristofer Phillips</p>
-          <p className="text-sm text-[#CA3D31]">Admin</p>
+          <p className="mt-2 text-lg">
+          {" "}
+          <span>{user.firstname}</span>
+          </p>
+          <p className="text-sm text-[#CA3D31]">{roleDisplay}</p>
         </div>
 
         <hr className="w-full border-t border-white" />

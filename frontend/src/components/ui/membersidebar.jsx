@@ -8,6 +8,9 @@ const MemberSideBar = () => {
   const navigate = useNavigate();
 
   const isModOrAdmin = user.role === "admin" || user.role === "moderator";
+  const roleDisplay = user.role === "admin" ? "Admin" : user.role === "moderator" ? "Moderator" : "Member";
+
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -51,8 +54,11 @@ const MemberSideBar = () => {
             alt="Profile"
             className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31]"
           />
-          <p className="mt-2 text-lg">Cristofer Phillips</p>
-          <p className="text-sm text-[#CA3D31]">Admin</p>
+          <p className="mt-2 text-lg">
+          {" "}
+          <span>{user.firstname}</span>
+          </p>
+          <p className="text-sm text-[#CA3D31]">{roleDisplay}</p>
         </div>
 
         <hr className="w-full border-t border-white" />
@@ -65,6 +71,8 @@ const MemberSideBar = () => {
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Calendar</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Omega Fi</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Member Directory</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Settings</Link>
+
 
         </ul>
 

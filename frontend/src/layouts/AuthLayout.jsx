@@ -37,7 +37,7 @@ const AuthLayout = () => {
               className="btn bg-[#CA3D31] text-white rounded-none w-40 border-none hover:shadow-lg" 
               onClick={() => setIsAdminPortal(!isAdminPortal)}
             >
-              {isAdminPortal ? "Exit Admin Portal" : "Admin Portal"}
+              {isAdminPortal ? "Member Portal" : "Admin Portal"}
             </PortalButton>
           </div>
         )}
