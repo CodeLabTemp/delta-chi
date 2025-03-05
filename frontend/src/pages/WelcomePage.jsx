@@ -1,16 +1,10 @@
-import PublicNavbar from "@/components/PublicNavbar";
-import { Outlet } from "react-router-dom";
-import PublicFooter from "@/components/PublicFooter";
 import PublicHeader from "@/components/PublicHeader";
 import PublicAbout from "@/components/PublicAbout";
 import PublicContact from "@/components/PublicContact";
 import PublicEvents from "@/components/PublicEvents";
 import PublicGallery from "@/components/PublicGallery";
 import PublicExecutives from "@/components/PublicExecutives";
-
-
 const WelcomePage = () => {
-  
   let pictures = [
     {photoName:"Photo1", photoSource:"/aboutpic.png"},
     {photoName:"Photo2", photoSource:"/aboutpic.png"},
@@ -67,8 +61,6 @@ const WelcomePage = () => {
       memberImage: "/avatar-jessica.jpeg",
     },
   ];
-
-
   return (
     <div>
       <main> 
