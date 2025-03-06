@@ -54,7 +54,7 @@ const MemberSideBar = () => {
           <Link className="block py-2 w-full hover:font-bold" to="/events">Events</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Calendar</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Omega Fi</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Member Directory</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/profiles">Member Directory</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Settings</Link>
         </ul>
 

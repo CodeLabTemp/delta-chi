@@ -46,7 +46,7 @@ const AdminSideBar = () => {
 
         {/* Sidebar Links */}
         <ul className="w-full text-center space-y-4 mt-4 pb-4">
-          <Link className="block py-2 w-full hover:font-bold" to="/dashboard">Dashboard</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/admin/adminpage">Dashboard</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profiles">Members</Link>
           <Link className="block py-2 w-full hover:font-bold" to="admin/permissions">Permissions</Link>
           <Link className="block py-2 w-full hover:font-bold" to="admin/announcements">Announcements</Link>          
