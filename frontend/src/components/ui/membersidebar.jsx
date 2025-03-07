@@ -2,9 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuthStore } from "@/store/authStore";
 
-const AdminSideBar = () => {
+const MemberSideBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuthStore();
+
+  const isModOrAdmin = user.role === "admin" || user.role === "moderator";
+  const roleDisplay = user.role === "admin" ? "Admin" : user.role === "moderator" ? "Moderator" : "Member";
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,7 +30,7 @@ const AdminSideBar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-screen w-64 bg-[#F1BD19] text-black z-50 pt-6 transition-transform drop-shadow-lg rounded-r-xl ${
+        className={`fixed top-0 left-0 h-screen w-64 bg-[#F1BD19] z-50 pt-6 transition-transform drop-shadow-lg rounded-r-xl ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 lg:relative`}
       >
@@ -39,21 +42,22 @@ const AdminSideBar = () => {
         <div className="flex flex-col items-center mb-4">
           <img src="/avatar-jessica.jpeg" alt="Profile" className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31]" />
           <p className="mt-2 text-lg">{user.firstname}</p>
-          <p className="text-sm text-[#CA3D31] font-semibold">Admin</p>
+          <p className="text-sm text-[#CA3D31]">{roleDisplay}</p>
         </div>
 
         <hr className="w-full border-t border-white" />
 
         {/* Sidebar Links */}
         <ul className="w-full text-center space-y-4 mt-4 pb-4">
-          <Link className="block py-2 w-full hover:font-bold" to="/admin/adminpage">Dashboard</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/profiles">Members</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="admin/permissions">Permissions</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="admin/announcements">Announcements</Link>          
-          <Link className="block py-2 w-full hover:font-bold" to="admin/events">Events</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/dashboard">Dashboard</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/announcements">Announcements</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/events">Events</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Calendar</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Omega Fi</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="/profiles">Member Directory</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Settings</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Edit My Profile</Link>
         </ul>
+
         <hr className="w-full border-t border-white mt-4" />
 
         <div className="flex items-center justify-center">
@@ -63,7 +67,7 @@ const AdminSideBar = () => {
         </div>
       </div>
 
-      {/* Hamburger Icon*/}
+      {/* Hamburger Icon */}
       {!isMenuOpen && (
         <div className="fixed top-4 left-4 lg:hidden z-50">
           <button className="btn btn-ghost btn-circle" onClick={() => setIsMenuOpen(true)}>
@@ -77,4 +81,4 @@ const AdminSideBar = () => {
   );
 };
 
-export default AdminSideBar;
+export default MemberSideBar;

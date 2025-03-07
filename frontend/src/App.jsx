@@ -30,7 +30,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import AnnouncementsPage from "./pages/private/Announcements";
 import ManageAnnouncements from "./pages/private/admin/ManageAnnouncementsPage";
 
-
+import AdminPage from "./pages/private/admin/AdminPage";
 
 
 //Not logged in? You can't go to the protected routes
@@ -49,6 +49,8 @@ const ProtectRoute = ({ children }) => {
   if (user.role === "banned") {
     return <Navigate to="/account-deactivated" replace />;
   }
+
+
 
   return children;
 };
@@ -75,6 +77,7 @@ const ProtectAdminRoute = ({ children }) => {
   if (user.role !== "admin" && user.role !== "moderator") {
     return <Navigate to="/dashboard" replace />;
   }
+
 
   return children;
 };
@@ -210,6 +213,15 @@ const App = () => {
           element={
             <ProtectAdminRoute>
               <ManageAnnouncements />
+            </ProtectAdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin/adminpage"
+          element={
+            <ProtectAdminRoute>
+              <AdminPage />
             </ProtectAdminRoute>
           }
         />

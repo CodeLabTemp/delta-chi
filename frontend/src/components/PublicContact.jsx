@@ -1,4 +1,6 @@
 import { useState} from "react"
+import axios from "axios";
+import { BASE_URL } from "@/utils/constants";
 
 export default function PublicContact() {
     const [values, setValues] = useState({
@@ -12,7 +14,7 @@ export default function PublicContact() {
     const [validEmailState, setValidEmailState] = useState(true)
     const [validMessageState, setValidMessageState] = useState(true)
 
-    const [status, setStatus] = useState('before')
+    const [sendStatus, setSendStatus] = useState('before')
     const [buttonDisabled, setButtonDisabled] = useState(false)
 
     const handleChanges = (e) => {
@@ -74,12 +76,13 @@ export default function PublicContact() {
             return;
         }
         setShowError(false)
-        setStatus('loading')
+        setSendStatus('loading')
         setTimeout(() => {
-            setStatus('after')
+            setSendStatus('after')
         }, 2000);
         disableButton(); 
 
+        
         console.log(values)
     }
 
@@ -128,6 +131,7 @@ export default function PublicContact() {
         <div className = "Contact"> 
             <div className="w-full flex flex-col items-center justify-center bg-custom-yellow text-custom-black font-montserrat py-8 px-6 gap-y-8 tablet:gap-y-16 tablet:px-[50px] desktop:px-72 tablet:py-16">
                 <div className="text-primary-red font-bold text-[32px] font-lora leading-[41px]">Contact</div>
+                {sendStatus === 'before' &&
                 <form className="flex flex-col w-full justify-center items-center" onSubmit={handleSubmit}>
                     <div className="w-full text-left px-1">{ showError && <RenderError />}</div>
                     <div className="w-full grid grid-cols-2 justify-center items-center gap-x-4 gap-y-[13px]">
@@ -136,9 +140,25 @@ export default function PublicContact() {
                         <textarea name="message" id="message" placeholder="Message" rows="10" cols="30" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4 col-span-2" onChange={(e) => handleChanges(e)} required value={values.message}/>
                     </div>
                     
-                    <button type="sumbit"className="w-[155px] h-10 bg-primary-yellow text-black font-bold py-2 px-4 mt-8 justify-center items-center text-center disabled:bg-custom-gray" id="sumbitButton" disabled={buttonDisabled}>{status === 'before' && "Send Message"} {status === 'loading' && <span className="loading loading-spinner loading-md"></span>} {status === 'after' && 'Message Sent'} </button>
+                    <button type="sumbit"className="w-[155px] h-10 bg-primary-yellow text-black font-bold py-2 px-4 mt-8 justify-center items-center text-center disabled:bg-custom-gray" id="sumbitButton" disabled={buttonDisabled}>Send Message</button>
                     
-                </form>
+                </form>}
+                {sendStatus === 'loading' && <span className="loading loading-spinner loading-md"></span>}
+                {sendStatus === 'after' && 
+                <div role="alert" className="alert bg-primary-yellow w-fit p-4">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 shrink-0 stroke-current"
+                        fill="none"
+                        viewBox="0 0 24 24">
+                        <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="font-montserrat font-semibold ">Message Sent!</span>
+                    </div>}
             </div>
             <div className="h-[158px] w-full bg-custom-yellow">
             </div>

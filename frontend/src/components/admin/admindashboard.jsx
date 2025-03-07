@@ -1,9 +1,7 @@
 const AdminDashboard = () => {
   return (
     <div className="flex flex-1 p-4 sm:p-6 flex-col items-center w-full">
-      {/* Title */}
-      <h2 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-20 text-[#CA3D31] font-merriweather">Admin Dashboard</h2>
-
+      
       {/* Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 w-full max-w-5xl">
         {/* Card 1 */}
