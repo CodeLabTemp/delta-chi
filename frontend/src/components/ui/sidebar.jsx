@@ -25,7 +25,6 @@ const AdminSideBar = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" onClick={() => setIsMenuOpen(false)}></div>
       )}
 
-      {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-screen w-64 bg-[#F1BD19] text-black z-50 pt-6 transition-transform drop-shadow-lg rounded-r-xl ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -37,7 +36,11 @@ const AdminSideBar = () => {
 
         {/* Profile Section */}
         <div className="flex flex-col items-center mb-4">
-          <img src="/avatar-jessica.jpeg" alt="Profile" className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31]" />
+          <img 
+            src={user.profileImage || "/default-avatar.png"} 
+            alt="Profile" 
+            className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31]" 
+          />
           <p className="mt-2 text-lg">{user.firstname}</p>
           <p className="text-sm text-[#CA3D31] font-semibold">Admin</p>
         </div>
@@ -49,9 +52,8 @@ const AdminSideBar = () => {
           <Link className="block py-2 w-full hover:font-bold" to="/admin/adminpage">Dashboard</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profiles">Members</Link>
           <Link className="block py-2 w-full hover:font-bold" to="admin/permissions">Permissions</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="admin/announcements">Announcements</Link>          
-          <Link className="block py-2 w-full hover:font-bold" to="admin/events">Events</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Settings</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="admin/announcements">Announcements</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="admin/events">Events</Link>          
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Edit My Profile</Link>
         </ul>
         <hr className="w-full border-t border-white mt-4" />
