@@ -78,7 +78,7 @@ const PublicNavbar = () => {
           </li>
           <li>
             <Link
-              to="/page1"
+              to="/aboutus"
               className="font-montserrat font-semibold text-black text-base px-4 py-2"
             >
               About Us

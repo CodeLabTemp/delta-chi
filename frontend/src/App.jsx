@@ -12,6 +12,7 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import PublicLayout from "./layouts/PublicLayout";
 import AboutUs from "./pages/AboutUs";
+import Membership from "./pages/Membership";
 import PublicPage1 from "./pages/PublicPage1";
 import PublicPage2 from "./pages/PublicPage2";
 import AuthLayout from "./layouts/AuthLayout";
@@ -101,6 +102,7 @@ const App = () => {
         <Route path="/page2" element={<PublicPage2 />} />
         
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/membership" element={<Membership />} />
 
         <Route path="/account-pending" element={<AccountApprovalPending />} />
         <Route

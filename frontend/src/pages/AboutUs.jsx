@@ -9,20 +9,20 @@ const AboutUs = () => {
       <div className="bg-custom-yellow flex flex-col desktop:px-40 tablet:px-20 tablet-lg:px-20 tablet:py-20 tablet-lg:py-14 py-6 px-6 gap-6 tablet:gap-20">
         
         <div className="bg-white flex tablet:flex-row flex-col"> 
-          <div className="tablet:border-r-[6px] tablet:border-b-0 border-b-[6px] border-primary-red tablet:w-1/2 px-8 py-8"> 
-            <h1 className="mb-8 text-primary-red font-bold text-[24px] font-lora tablet:font-merriweather tablet:text-[48px] tablet:font-black">Value #1</h1>
+          <div className="tablet:border-r-[6px] tablet:border-t-0 border-t-[6px] border-primary-red tablet:w-1/2 px-8 py-8"> 
+            <h1 className="mb-8 text-primary-red font-semibold text-[24px] font-lora tablet:font-merriweather tablet:text-[48px] tablet:font-black">Value #1</h1>
             <p className="font-montserrat">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
           </div>
           <img
               src="/value1.jpg"
               alt="Picture of the author"
-              className="tablet:w-1/2 w-full h-[319px] tablet-sm:h-auto object-cover"
+              className="tablet:w-1/2 w-full h-[319px] tablet-sm:h-auto tablet:order-last order-first object-cover"
             />
         </div>
 
-        <div className="bg-white flex tablet:flex-row flex-col"> 
-          <div className="tablet:border-r-[6px] tablet:border-b-0 border-b-[6px] border-primary-red tablet:w-1/2 px-8 py-8"> 
+        <div className="bg-white flex tablet:flex-row-reverse flex-col"> 
+          <div className="tablet:border-t-0 border-t-[6px] border-primary-red tablet:w-1/2 px-8 py-8"> 
             <h1 className="mb-8 text-primary-red font-bold text-[24px] font-lora tablet:font-merriweather tablet:text-[48px] tablet:font-black">Value #2</h1>
             <p className="font-montserrat">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
@@ -30,12 +30,12 @@ const AboutUs = () => {
           <img
               src="/value2.jpg"
               alt="Picture of the author"
-              className="tablet:w-1/2 w-full h-[319px] tablet-sm:h-auto object-cover"
+              className="border-r-0 tablet:border-r-[6px]  border-primary-red tablet:w-1/2 w-full h-[319px] tablet-sm:h-auto tablet:order-last order-first object-cover"
             />
         </div>
 
         <div className="bg-white flex tablet:flex-row flex-col"> 
-          <div className="tablet:border-r-[6px] tablet:border-b-0 border-b-[6px] border-primary-red tablet:w-1/2 px-8 py-8"> 
+          <div className="tablet:border-r-[6px] tablet:border-t-0 border-t-[6px] border-primary-red tablet:w-1/2 px-8 py-8"> 
             <h1 className="mb-8 text-primary-red font-bold text-[24px] font-lora tablet:font-merriweather tablet:text-[48px] tablet:font-black">Value #3</h1>
             <p className="font-montserrat">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
@@ -43,7 +43,7 @@ const AboutUs = () => {
           <img
               src="/value3.jpg"
               alt="Picture of the author"
-              className="tablet:w-1/2 w-full h-[319px] tablet-sm:h-auto object-cover"
+              className="tablet:w-1/2 w-full h-[319px] tablet-sm:h-auto tablet:order-last order-first object-cover"
             />
         </div>
       </div>
