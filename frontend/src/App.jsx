@@ -29,6 +29,7 @@ import ManageEvent from "./pages/private/admin/ManageEventPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import AnnouncementsPage from "./pages/private/Announcements";
 import ManageAnnouncements from "./pages/private/admin/ManageAnnouncementsPage";
+import ManageMessages from "./pages/private/admin/ManageMessages";
 
 import AdminPage from "./pages/private/admin/AdminPage";
 
@@ -213,6 +214,15 @@ const App = () => {
           element={
             <ProtectAdminRoute>
               <ManageAnnouncements />
+            </ProtectAdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin/messages"
+          element={
+            <ProtectAdminRoute>
+              <ManageMessages />
             </ProtectAdminRoute>
           }
         />

@@ -40,9 +40,11 @@ const AuthLayout = () => {
 
   return (
     <div className="flex h-screen">
+      <div className="w-64 h-full fixed left-0 top-0">
       {isAdminView ? <AdminSideBar /> : <MemberSideBar />}
+      </div>
 
-      <div className="flex-1 flex flex-col items-center justify-start p-6">
+      <div className="flex-1 flex flex-col items-center justify-start p-6 min-[1000px]:pl-64">
         
         {/* Admin Portal Button - Only visible to admins */}
         {user.role === "admin" && (
