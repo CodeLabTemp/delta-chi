@@ -6,13 +6,14 @@ import PublicFooter from "@/components/PublicFooter";
 const PublicLayout = ({ children }) => {
   console.log("PublicLayout.jsx fired");
 
-  
 
   return (
     <div>
       <PublicNavbar />
-        <Outlet /> 
-      <PublicFooter/>   
+      <main>
+        <Outlet />
+      </main>
+      <PublicFooter />
     </div>
   );
 };

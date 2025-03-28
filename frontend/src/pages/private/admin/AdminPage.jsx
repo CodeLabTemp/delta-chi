@@ -1,12 +1,11 @@
 import DashboardAnnouncements from "@/components/DashboardAnnouncements";
-import EventCalendar from "@/components/EventCalendar";
+import AdminDashboard from "@/components/admin/admindashboard";
+import { useAuthStore } from "@/store/authStore";
 import EventsDashboard from "@/components/admin/admineventdashboard";
 import PendingRequests from "@/components/admin/adminpendingrequests";
 import QuickActions from "@/components/admin/adminquickaction";
-import { useAuthStore } from "@/store/authStore";
-import EventsDashboard from "@/components/admin/admineventdashboard";
 
-const DashboardPage = () => {
+const AdminPage = () => {
   const { user, isCheckingAuth } = useAuthStore();
 
   if (isCheckingAuth) {
@@ -19,14 +18,14 @@ const DashboardPage = () => {
         Welcome, <span>{user.firstname}</span>!
       </p>
 
-      <DashboardAnnouncements />
-
       <div className="mt-6 w-full max-w-4xl bg-white p-6 rounded-lg">
-        <EventsDashboard />
-        <EventCalendar />
+        <DashboardAnnouncements />
+        <AdminDashboard />
+        <PendingRequests />
+        <QuickActions />
       </div>
     </div>
   );
 };
 
-export default DashboardPage;
+export default AdminPage;
