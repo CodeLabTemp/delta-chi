@@ -12,6 +12,8 @@ export default function MembershipForm() {
 
     const [showError, setShowError] = useState(false)
     const [validNameState, setValidNameState] = useState(true)
+    const [validDOBState, setValidDOBState] = useState(true)
+    const [validPhoneNumberState, setValidPhoneNumberState] = useState(true)
     const [validEmailState, setValidEmailState] = useState(true)
     const [validMessageState, setValidMessageState] = useState(true)
 
@@ -26,6 +28,8 @@ export default function MembershipForm() {
         var error = false;
 
         var nameTemp = true; 
+        var dobTemp = true; 
+        var phoneNumberTemp = true; 
         var emailTemp = true; 
         var messageTemp = true; 
 
@@ -41,6 +45,18 @@ export default function MembershipForm() {
             nameTemp = false; 
         }else {
             nameTemp = true; 
+        }
+        if(dob.length < 1 || !/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(name)){
+            error = true; 
+            dobTemp = false; 
+        }else {
+            dobTemp = true; 
+        }
+        if(phoneNumber.length < 1 || !/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(name)){
+            error = true; 
+            phoneNumberTemp = false; 
+        }else {
+            phoneNumberTemp = true; 
         }
         if(message.length < 10 || !/[\w]+/.test(message)){
             error = true; 
@@ -60,6 +76,16 @@ export default function MembershipForm() {
             } else {
                 setValidNameState(true);
             }
+            if(!dobTemp){
+                setValidDOBState(false)
+            } else {
+                setValidDOBState(true);
+            }
+            if(!phoneNumberTemp){
+                setValidPhoneNumberState(false);
+            } else {
+                setValidPhoneNumberState(true);
+            }
             if(!emailTemp){
                 setValidEmailState(false);
             } else {
@@ -78,7 +104,7 @@ export default function MembershipForm() {
             setSendStatus('after')
         }, 2000);
         disableButton(); 
-
+        /*
         try {
             const response = axios.post(BASE_URL + "/api/contact/", 
               {
@@ -91,7 +117,10 @@ export default function MembershipForm() {
         } catch (error) {
             throw error; 
         }
+            */
         console.log(name)
+        console.log(dob)
+        console.log(phoneNumber)
         console.log(email)
         console.log(message)
     }
@@ -125,6 +154,14 @@ export default function MembershipForm() {
                     {<ErrorSign />}
                     <p><b>Name Requirement Not Met:</b> Please make sure that your name is at least one character length and has at least one letter in it. </p>
                 </li>}
+                {!validDOBState && <li className="flex flex-col-2 text-xs tablet-sm:text-base">
+                    {<ErrorSign />}
+                    <p><b>Date of Birth Requirement Not Met:</b> Please make sure that your DoB is in mm/dd/yyyy format</p>
+                </li>}
+                {!validPhoneNumberState && <li className="flex flex-col-2 text-xs tablet-sm:text-base">
+                    {<ErrorSign />}
+                    <p><b>Phone Number Requirement Not Met:</b> Please make sure that your phoneNumber is at least 10 number length.</p>
+                </li>}
                 {!validEmailState && <li className="flex flex-col-2 text-xs tablet-sm:text-base">
                     {<ErrorSign />}
                     <p><b>Email Requirement Not Met:</b> Please make sure that your email is a valid email.</p> 
@@ -146,10 +183,10 @@ export default function MembershipForm() {
                     <div className="w-full text-left px-1">{ showError && <RenderError />}</div>
                     <div className="w-full grid grid-cols-2 justify-center items-center gap-x-4 gap-y-[13px]">
                         <input type ="text" name="name" id="name" placeholder="Name" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4" onChange={(e) => setName(e.target.value)} required value={name}/>
-                        <input type ="text" name="email" id="email" placeholder="Date of Birth" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4" onChange={(e) => setDOB(e.target.value)} required value={dob}/>
-                        <input type ="text" name="name" id="name" placeholder="Name" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4" onChange={(e) => setPhoneNumber(e.target.value)} required value={phoneNumber}/>
+                        <input type ="text" name="dob" id="dob" placeholder="Date of Birth" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4" onChange={(e) => setDOB(e.target.value)} required value={dob}/>
+                        <input type ="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4" onChange={(e) => setPhoneNumber(e.target.value)} required value={phoneNumber}/>
                         <input type ="text" name="email" id="email" placeholder="Email" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4" onChange={(e) => setEmail(e.target.value)} required value={email}/>
-                        <textarea name="message" id="message" placeholder="Message" rows="10" cols="30" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4 col-span-2" onChange={(e) => setMessage(e.target.value)} required value={message}/>
+                        <textarea name="message" id="message" placeholder="Why do you want to join?" rows="10" cols="30" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4 col-span-2" onChange={(e) => setMessage(e.target.value)} required value={message}/>
                     </div>
                     
                     <button type="sumbit"className="w-[155px] h-10 bg-primary-yellow text-black font-bold py-2 px-4 mt-8 justify-center items-center text-center disabled:bg-custom-gray" id="sumbitButton" disabled={buttonDisabled}>Sumbit</button>
