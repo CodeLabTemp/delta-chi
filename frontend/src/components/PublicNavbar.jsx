@@ -94,7 +94,7 @@ const PublicNavbar = () => {
           </li>
           <li>
             <Link
-              to="/page2"
+              to="/public_events"
               className="font-montserrat font-semibold text-black text-base px-4 py-2"
             >
               Events

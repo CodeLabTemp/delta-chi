@@ -107,7 +107,7 @@ const App = () => {
         
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/membership" element={<Membership />} />
-        <Route path="/events" element={<Events />} />
+        <Route path="/public_events" element={<Events />} />
 
         <Route path="/account-pending" element={<AccountApprovalPending />} />
         <Route

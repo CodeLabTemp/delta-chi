@@ -4,7 +4,6 @@ import EventsDashboard from "@/components/admin/admineventdashboard";
 import PendingRequests from "@/components/admin/adminpendingrequests";
 import QuickActions from "@/components/admin/adminquickaction";
 import { useAuthStore } from "@/store/authStore";
-import EventsDashboard from "@/components/admin/admineventdashboard";
 
 const DashboardPage = () => {
   const { user, isCheckingAuth } = useAuthStore();
