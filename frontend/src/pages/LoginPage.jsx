@@ -23,7 +23,7 @@ export default function LoginPage() {
   
     const { user } = useAuthStore.getState();
     if (user) {
-      navigate(user.role === "admin" ? "/admin/adminpage" : "/dashboard", { replace: true });
+      navigate(user.role === "admin" || user.role === "moderator" ? "/admin/adminpage" : "/dashboard", { replace: true });
     }
   };
     

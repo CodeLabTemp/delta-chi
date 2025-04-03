@@ -27,13 +27,17 @@ const ImageUploader = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <input type="file" accept="image/*" onChange={handleFileChange} />
-
+<div className="flex items-center space-x-4"> {/* Use flex to align horizontally */}
+      <input
+        type="file"
+        accept="image/*"
+        className="file-input max-w-xs file-input-bordered"
+        onChange={handleFileChange}
+      />
       <button
         onClick={handleUpload}
         disabled={uploading}
-        className="mt-2 bg-blue-500 text-white px-3 py-1 rounded"
+        className="bg-primary-yellow text-white px-3 py-2"
       >
         {uploading ? "Uploading..." : "Upload Image"}
       </button>

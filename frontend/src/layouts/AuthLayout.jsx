@@ -17,7 +17,7 @@ const AuthLayout = () => {
 
   useEffect(() => {
     if (user) {
-      setIsAdminView(user.role === "admin"); // Ensure admin sidebar is default for admins
+      setIsAdminView(user.role === "admin"  || user.role === "moderator"); // Ensure admin sidebar is default for admins
     }
   }, [user]);
 
@@ -47,7 +47,7 @@ const AuthLayout = () => {
       <div className="flex-1 flex flex-col items-center justify-start p-6 min-[1000px]:pl-64">
         
         {/* Admin Portal Button - Only visible to admins */}
-        {user.role === "admin" && (
+        {(user.role === "admin" || user.role === "moderator") && (
           <div className="self-end mb-4">
             <PortalButton
               className="btn bg-[#CA3D31] text-white rounded-none w-40 border-none hover:shadow-lg"

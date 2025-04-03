@@ -43,7 +43,7 @@ const MemberSideBar = () => {
             <img
               src={user.profileImage}
               alt="Profile"
-              className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31]"
+              className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31] bg-white"
             />
           ) : (
             <MemberImage />

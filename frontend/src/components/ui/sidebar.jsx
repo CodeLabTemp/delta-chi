@@ -1,10 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuthStore } from "@/store/authStore";
+import MemberImage from "@/components/MemberImage";
+
 
 const AdminSideBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuthStore();
+
+  const roleDisplay = user.role === "admin" ? "Admin" : user.role === "moderator" ? "Moderator" : "Member";
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,15 +41,19 @@ const AdminSideBar = () => {
 
         {/* Profile Section */}
         <div className="flex flex-col items-center mb-4">
-          <img 
-            src={user.profileImage || "/default-avatar.png"} 
-            alt="Profile" 
-            className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31]" 
-          />
+          {user.profileImage ? (
+            <img
+              src={user.profileImage}
+              alt="Profile"
+              className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31] bg-white"
+            />
+          ) : (
+            <MemberImage />
+          )}
           <p className="mt-2 text-lg">{user.firstname}</p>
-          <p className="text-sm text-[#CA3D31] font-semibold">Admin</p>
+          <p className="text-sm text-[#CA3D31] font-semibold">{roleDisplay}</p>
         </div>
-
+        
         <hr className="w-full border-t border-white" />
 
         {/* Sidebar Links */}
