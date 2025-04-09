@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function EventsDashboard() {
 return(
     <div className = "eventsDashboard w-full max-w-4xl"> 
@@ -36,7 +38,7 @@ return(
                         <button className="w-1/2 bg-transparent hover:bg-custom-gray text-secondary-blue font-semibold py-2 px-4 border border-secondary-blue tablet:w-full">Add to Calender</button>
                     </div>
                 </div>
-                <button className="bg-transparent hover:bg-custom-gray text-secondary-blue font-semibold py-2 px-4 border border-secondary-blue">View More</button>
+                <Link to="/events"><button className="bg-transparent hover:bg-custom-gray text-secondary-blue font-semibold py-2 px-4 border border-secondary-blue">View More</button></Link> 
             </div>
         </div>
     </div>
