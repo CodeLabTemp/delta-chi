@@ -146,7 +146,7 @@ export default function EventsPageComponent() {
     }
 
     const CurrentEventsRender = () => {
-        const eventCurr = events.filter((event) => new Date(event.startDate) - new Date() < 0);
+        const eventCurr = events.filter((event) => new Date(event.startDate) - new Date() > 0);
         return <div className="w-full">
             <div className="bg-white p-6 tablet-lg:py-[70px] tablet-lg:px-[50px]">
                 {page === "one" && EventsRender(0,4, eventCurr)}
