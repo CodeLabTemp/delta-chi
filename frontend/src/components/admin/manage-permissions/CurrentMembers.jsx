@@ -58,12 +58,18 @@ const CurrentMembers = () => {
   };
 
   return (
-    <div className="p-6 text-[#333333]">
-      <h2 className="text-2xl font-bold mb-4 text-white">Current Members</h2>
+  <div className="p-6 text-[#333333] relative">
+    <h2 className="text-2xl font-bold mb-4 text-white">Current Members</h2>
       {currentMembers?.length === 0 ? (
         <div>There are no current members</div>
       ) : (
         <div className="w-full">
+          <div className="hidden lg:grid grid-cols-4 font-bold py-2 border-b text-center">
+            <span>Name</span>
+            <span>Email</span>
+            <span>Role</span>
+            <span>Action</span>
+          </div>
           {currentMembers?.map((member) => {
             const isOtherAdmin =
               member.role === "admin" && member._id !== user?._id;
@@ -71,11 +77,10 @@ const CurrentMembers = () => {
             return (
               <div
                 key={member._id}
-                className={`grid grid-cols-4 items-center border-b py-4 text-center ${
-                  isOtherAdmin ? "opacity-60" : ""
-                }`}
+                className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-center border-b py-4 text-center
+                   ${isOtherAdmin ? "opacity-60" : ""}`}
               >
-                <div className="flex justify-center items-center gap-4">
+                <div className="flex justify-center lg:justify-start lg:ml-5 items-center gap-4">
                   {member.profileImage?.url ? (
                     <img
                       src={member.profileImage.url}
@@ -159,22 +164,24 @@ const CurrentMembers = () => {
                   )}
                 </div>
 
+                <div className="md:col-span-full md:flex md:justify-center lg:col-span-1 lg:flex lg:mr-4 mt-2 md:mt-2 lg:mt-0">
                 <button
-                  onClick={() => updateRole(member._id, member.role)}
-                  disabled={isOtherAdmin}
-                  title={
-                    isOtherAdmin
-                      ? "You cannot change another admin's role"
-                      : "Update role"
-                  }
-                  className={`font-bold px-3 py-1 ${
-                    isOtherAdmin
-                      ? "bg-gray-100 text-gray-500 cursor-not-allowed"
-                      : "bg-white text-[#11375C]"
-                  }`}
-                >
-                  Update
-                </button>
+                    onClick={() => updateRole(member._id, member.role)}
+                    disabled={isOtherAdmin}
+                    title={
+                      isOtherAdmin
+                        ? "You cannot change another admin's role"
+                        : "Update role"
+                    }
+                    className={`font-bold px-3 py-1 ${
+                      isOtherAdmin
+                        ? "bg-gray-100 text-gray-500 cursor-not-allowed"
+                        : "bg-white text-[#11375C]"
+                    }`}
+                  >
+                    Update
+                  </button>
+                </div>
               </div>
             );
           })}

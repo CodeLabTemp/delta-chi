@@ -48,7 +48,7 @@ const ManagePermissions = () => {
         <TabsContent value="pending">
           <PendingApplicants />
         </TabsContent>
-        <TabsContent value="current">
+        <TabsContent value="current" className="max-[765px]:pt-6">
           <CurrentMembers />
         </TabsContent>
         <TabsContent value="banned">
