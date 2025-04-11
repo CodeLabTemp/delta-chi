@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export default function PendingRequests() {
@@ -107,7 +108,7 @@ return(
                 
             </div>
             <div className="w-full flex flex-col items-center justify-center mt-6">
-                <button className="bg-transparent hover:bg-custom-gray text-secondary-blue font-semibold py-2 px-4 border border-secondary-blue">View All</button>
+                <Link to="/admin/permissions"><button className="bg-transparent hover:bg-custom-gray text-secondary-blue font-semibold py-2 px-4 border border-secondary-blue">View All</button></Link>
             </div>
         </div>
     </div>

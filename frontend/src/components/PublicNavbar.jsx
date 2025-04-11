@@ -86,7 +86,7 @@ const PublicNavbar = () => {
           </li>
           <li>
             <Link
-              to="/page1"
+              to="/membership"
               className="font-montserrat font-semibold text-black text-base px-4 py-2"
             >
               Membership
