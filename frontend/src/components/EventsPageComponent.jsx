@@ -112,10 +112,10 @@ export default function EventsPageComponent() {
             <div className="flex flex-col gap-2 tablet-lg:w-1/2 tablet-lg:h-[262px]" >
                 <h1 className="text-[#333333] font-semibold text-2xl font-lora leading-[31px]">{event.title}</h1>
                 <p className="text-[#333333] text-xs font-light font-montserrat leading-[15px]">{format(new Date(event.startDate), "MMMM d, yyyy h:mm a")} - {format(new Date(event.endDate), "MMMM d, yyyy h:mm a")}</p>
-                <p className="text-[#5B6665] text-wrap text-ellipsis tablet-lg:hidden">{event.description.length < 750 ? event.description : `${event.description.substring(0, 750)}...`}</p>
-                <p className="text-[#5B6665] text-wrap text-ellipsis hidden tablet-lg:inline tablet:hidden">{event.description.length < 125 ? event.description : `${event.description.substring(0, 125)}...`}</p>
-                <p className="text-[#5B6665] text-wrap text-ellipsis hidden tablet:inline desktop:hidden">{event.description.length < 350 ? event.description : `${event.description.substring(0, 350)}...`}</p>
-                <p className="text-[#5B6665] text-wrap text-ellipsis hidden desktop:inline ">{event.description.length < 550 ? event.description : `${event.description.substring(0, 550)}...`}</p>
+                <p className="text-[#5B6665] container max-w-full text-wrap text-ellipsis tablet-lg:hidden">{event.description.length < 750 ? event.description : `${event.description.substring(0, 750)}...`}</p>
+                <p className="text-[#5B6665] container max-w-full text-wrap text-ellipsis hidden tablet-lg:inline tablet:hidden">{event.description.length < 125 ? event.description : `${event.description.substring(0, 125)}...`}</p>
+                <p className="text-[#5B6665] container max-w-full text-wrap text-ellipsis hidden tablet:inline desktop:hidden">{event.description.length < 350 ? event.description : `${event.description.substring(0, 350)}...`}</p>
+                <p className="text-[#5B6665] container max-w-full text-wrap text-ellipsis hidden desktop:inline ">{event.description.length < 550 ? event.description : `${event.description.substring(0, 550)}...`}</p>
             </div>
         </div>
     }
