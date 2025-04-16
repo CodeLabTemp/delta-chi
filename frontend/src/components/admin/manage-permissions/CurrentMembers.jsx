@@ -148,6 +148,12 @@ const CurrentMembers = () => {
                           Member
                         </button>
                         <button
+                          onClick={() => updateRole(member._id, "moderator")}
+                          className="block px-4 py-2 text-sm text-gray-700 w-full text-left hover:bg-gray-100"
+                        >
+                          Moderator
+                        </button>
+                        <button
                           onClick={() => updateRole(member._id, "admin")}
                           className="block px-4 py-2 text-sm text-gray-700 w-full text-left hover:bg-gray-100"
                         >
