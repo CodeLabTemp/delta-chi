@@ -6,7 +6,7 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
-const ITEMS_PER_PAGE = 3;
+const ITEMS_PER_PAGE = 6;
 const DEFAULT_IMAGE = "/public-event-default.jpeg";
 
 const ViewEvents = () => {
@@ -17,6 +17,7 @@ const ViewEvents = () => {
   const [numOfPages, setNumOfPages] = useState(0);
   const [numOfEvents, setNumOfEvents] = useState(0);
   const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
     fetchEvents(currPage);
@@ -57,6 +58,16 @@ const ViewEvents = () => {
     }
   };
 
+  const openModal = (event) => {
+    setSelectedEvent(event);
+    document.getElementById("event_modal").checked = true;
+  };
+
+  const closeModal = () => {
+    document.getElementById("event_modal").checked = false;
+    setSelectedEvent(null);
+  };
+
   return (
     <div className="container mx-auto p-4">
       {/* Sub-tabs for Future/Past Events */}
@@ -89,7 +100,6 @@ const ViewEvents = () => {
         </button>
       </div>
 
-      {/* Event List */}
       <h2 className="text-xl font-bold mb-4">
         {activeTab === "future"
           ? `Upcoming Events (${numOfEvents})`
@@ -100,24 +110,33 @@ const ViewEvents = () => {
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {events.map((event) => (
-              <div key={event._id} className="border p-4 rounded">
+              <div
+                key={event._id}
+                className="border p-4 rounded shadow bg-custom-yellow text-[#11375C] break-words hover:shadow-lg transition cursor-pointer"
+                onClick={() => openModal(event)}
+              >
                 <img
                   src={event.image?.url || DEFAULT_IMAGE}
                   alt={event.title}
                   className="w-full h-48 object-cover rounded mb-4"
                 />
-                <h3 className="font-bold">{event.title}</h3>
-                <p className="mb-2">{event.description}</p>
+                <h3 className="font-bold text-lg break-words">{event.title}</h3>
                 <p className="text-sm">
-                  Start:{" "}
+                  <strong>Start:</strong>{" "}
                   {format(new Date(event.startDate), "MMMM d, yyyy h:mm a")}
                 </p>
                 <p className="text-sm mb-2">
-                  End: {format(new Date(event.endDate), "MMMM d, yyyy h:mm a")}
+                  <strong>End:</strong>{" "}
+                  {format(new Date(event.endDate), "MMMM d, yyyy h:mm a")}
                 </p>
-                <p className="text-sm mb-4">Location: {event.location}</p>
-
-                <div className="flex gap-2">
+                <p className="text-sm mb-2 max-h-[48px] overflow-hidden text-ellipsis line-clamp-2 break-words">
+                  {event.description}
+                </p>
+                <p className="text-sm mb-2">
+                  <strong>Location:</strong>{" "}
+                  {event.location || "Not provided"}
+                </p>
+                <div className="flex gap-2 mt-2 z-10 relative" onClick={(e) => e.stopPropagation()}>
                   <button
                     onClick={() => navigate(`/admin/events/${event._id}`)}
                     className="bg-blue-500 text-white px-3 py-1 rounded text-sm"
@@ -154,6 +173,46 @@ const ViewEvents = () => {
       ) : (
         <h1 className="text-xl text-center text-gray-500">No Events Found</h1>
       )}
+
+      {/* Modal */}
+      <input type="checkbox" id="event_modal" className="modal-toggle" />
+      <div className="modal" onClick={closeModal}>
+        <div
+          className="modal-box relative bg-[#F5F5DC] max-w-xl rounded-lg"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {selectedEvent && (
+            <>
+              <button
+                className="absolute top-3 right-3 bg-red-500 text-white p-1 rounded-full w-8 h-8 flex items-center justify-center"
+                onClick={closeModal}
+              >
+                ✕
+              </button>
+
+              <img
+                src={selectedEvent.image?.url || DEFAULT_IMAGE}
+                alt={selectedEvent.title}
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+
+              <h3 className="text-2xl font-bold text-gray-800 break-words">
+                {selectedEvent.title}
+              </h3>
+
+              <div className="flex flex-col gap-1 text-gray-700 mt-2 text-sm">
+                <p>📅 <span className="font-medium">{format(new Date(selectedEvent.startDate), "MMMM d, yyyy h:mm a")}</span></p>
+                <p>📍 <span className="font-medium">{selectedEvent.location || "No location provided"}</span></p>
+                <p>⏰ <span className="font-medium">{format(new Date(selectedEvent.endDate), "MMMM d, yyyy h:mm a")}</span></p>
+              </div>
+
+              <p className="py-4 text-gray-700 break-words">
+                {selectedEvent.description}
+              </p>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
