@@ -173,10 +173,13 @@ export const useAuthStore = create((set, get) => ({
       throw new Error(errorMessage);
     }
   },
-  uploadProfileImg: async (formData) => {
+  uploadProfileImage: async (file) => {
     try {
+      const formData = new FormData();
+      formData.append("image", file);
+
       const response = await axios.post(
-        `${BASE_URL}/api/images/upload`,
+        `${BASE_URL}/api/images/upload/profile-image`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

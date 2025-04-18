@@ -1,5 +1,4 @@
 import DashboardAnnouncements from "@/components/DashboardAnnouncements";
-import EventCalendar from "@/components/EventCalendar";
 import { useAuthStore } from "@/store/authStore";
 import EventsDashboard from "@/components/admin/admineventdashboard";
 
@@ -20,7 +19,6 @@ const DashboardPage = () => {
 
       <div className="mt-6 w-full max-w-4xl bg-white p-6 rounded-lg">
         <EventsDashboard />
-        <EventCalendar />
       </div>
     </div>
   );
