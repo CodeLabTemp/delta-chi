@@ -11,13 +11,13 @@ export default function EventsPageComponent() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [page, setPage] = useState("one");
-    const [buttonDisabled1, setButtonDisabled1] = useState(true);
-    const [buttonDisabled2, setButtonDisabled2] = useState(false);
-    const [buttonDisabled3, setButtonDisabled3] = useState(false);
-    const [buttonDisabled4, setButtonDisabled4] = useState(false);
-    const [modalState, setModalState] = useState(false);
-    const [EventChoice, setEventChoice] = useState(null);
+    const [buttonDisabledList, setButtonDisabledList] = useState([]); 
+    const [buttonMap, setButtonMap] = useState(new Map());
+    const [mapSize, setMapSize] = useState(0);
     const [selectedEvent, setSelectedEvent] = useState(null);
+    const [currentNum, setCurrentNum] = useState(1);
+    const [currentButtonStart, setCurrentButtonStart] = useState(0);
+    const [currentButtonEnd, setCurrentButtonEnd] = useState(0);
 
     const openModal = (event) => {
         setSelectedEvent(event);
@@ -32,6 +32,12 @@ export default function EventsPageComponent() {
     useEffect(() => {
         fetchEvents();
     }, []);
+
+    useEffect(() => {
+        fillButtonMap();
+        setMapSize(Math.ceil(events.length/4));
+        changeButtomMap(1);
+    }, [events])
 
     const fetchEvents = async () => {
         try {
@@ -53,35 +59,52 @@ export default function EventsPageComponent() {
     }
     const setPast = () => {
         setCurrent('past');
+        changeButtomMap(1);
+        setCurrentNum(0);
         console.log(isCurrent);
     }
-    const setPage1 = () => {
-        setPage("one"); 
-        setButtonDisabled1(true); 
-        setButtonDisabled2(false);
-        setButtonDisabled3(false);
-        setButtonDisabled4(false);
+    const fillButtonMap = () => {
+        for(let i = 0; i < Math.ceil(events.length/4); i++){
+            if(i == 0){
+                buttonMap.set(i, true);
+            } else {
+                buttonMap.set(i, false);
+            }
+        }
+        setCurrentButtonStart(0); 
+        if (buttonMap.length >= 5){
+            setCurrentButtonStart(5);
+        } else {
+            setCurrentButtonStart(buttonMap.length);
+        }
+        setCurrentNum(0);
     }
-    const setPage2 = () => {
-        setPage("two"); 
-        setButtonDisabled1(false); 
-        setButtonDisabled2(true);
-        setButtonDisabled3(false);
-        setButtonDisabled4(false);
-    }
-    const setPage3 = () => {
-        setPage("three"); 
-        setButtonDisabled1(false); 
-        setButtonDisabled2(false);
-        setButtonDisabled3(true);
-        setButtonDisabled4(false); 
-    }
-    const setPage4 = () => {
-        setPage("four"); 
-        setButtonDisabled1(false); 
-        setButtonDisabled2(false);
-        setButtonDisabled3(false);
-        setButtonDisabled4(true); 
+    const changeButtomMap = (num) => {
+        let temp = num;
+        let size = buttonMap.size;
+        for(let i = 0; i < size; i++){
+            if(i == num - 1){
+                buttonMap.set(i, true);
+            } else {
+                buttonMap.set(i, false);
+            }
+        }
+
+        if((num - 1) <= 2 && num >= size - 2){
+            setCurrentButtonStart(0);
+            setCurrentButtonEnd(size);
+        } else if ((num - 1) <= 2 && num < size - 2) {
+            setCurrentButtonStart(0);
+            console.log(size);
+            setCurrentButtonEnd(5);
+        } else if ((num - 1) > 2 && num >= size - 2) {
+            setCurrentButtonStart(size - 5);
+            setCurrentButtonEnd(size);
+        } else {
+            setCurrentButtonStart(num - 2);
+            setCurrentButtonEnd(num + 2);
+        }
+        setCurrentNum(num - 1);
     }
     const CurrentButtonRender = () => {
         return <div className="flex w-full join rounded-2xl bg-custom-gray gap-4 mb-6">
@@ -109,13 +132,13 @@ export default function EventsPageComponent() {
             <div className="flex flex-col gap-2 tablet-lg:w-1/2 h-[262px]">
                 <img src={event.hasOwnProperty("image") && event.image != null && event.image.hasOwnProperty("url") ? (event.image.url) : ("/aboutpic.png")} alt="" className="w-full rounded-2xl h-full object-cover" />
             </div>
-            <div className="flex flex-col gap-2 tablet-lg:w-1/2 tablet-lg:h-[262px]" >
+            <div className="flex flex-col gap-2 tablet-lg:w-1/2 tablet-lg:h-[262px] text-wrap max-w-full" >
                 <h1 className="text-[#333333] font-semibold text-2xl font-lora leading-[31px]">{event.title}</h1>
                 <p className="text-[#333333] text-xs font-light font-montserrat leading-[15px]">{format(new Date(event.startDate), "MMMM d, yyyy h:mm a")} - {format(new Date(event.endDate), "MMMM d, yyyy h:mm a")}</p>
-                <p className="text-[#5B6665] container max-w-full text-wrap text-ellipsis tablet-lg:hidden">{event.description.length < 750 ? event.description : `${event.description.substring(0, 750)}...`}</p>
-                <p className="text-[#5B6665] container max-w-full text-wrap text-ellipsis hidden tablet-lg:inline tablet:hidden">{event.description.length < 125 ? event.description : `${event.description.substring(0, 125)}...`}</p>
-                <p className="text-[#5B6665] container max-w-full text-wrap text-ellipsis hidden tablet:inline desktop:hidden">{event.description.length < 350 ? event.description : `${event.description.substring(0, 350)}...`}</p>
-                <p className="text-[#5B6665] container max-w-full text-wrap text-ellipsis hidden desktop:inline ">{event.description.length < 550 ? event.description : `${event.description.substring(0, 550)}...`}</p>
+                <p className="text-[#5B6665] container max-w-full text-wrap tablet-lg:hidden break-words">{event.description.length < 750 ? event.description : `${event.description.substring(0, 750)}...`}</p>
+                <p className="text-[#5B6665] container max-w-full text-wrap hidden tablet-lg:inline tablet:hidden break-words">{event.description.length < 125 ? event.description : `${event.description.substring(0, 125)}...`}</p>
+                <p className="text-[#5B6665] container max-w-full text-wrap hidden tablet:inline desktop:hidden break-words">{event.description.length < 350 ? event.description : `${event.description.substring(0, 350)}...`}</p>
+                <p className="text-[#5B6665] container max-w-full text-wrap hidden desktop:inline break-words">{event.description.length < 550 ? event.description : `${event.description.substring(0, 550)}...`}</p>
             </div>
         </div>
     }
@@ -144,41 +167,55 @@ export default function EventsPageComponent() {
             )}
         </div>  
     }
-
+    const ButtonRender = () => {
+        return <div className="w-full flex justify-center items-center pt-9 tablet-lg:bg-white">
+        <div className="flex w-fit h-fit join rounded-2xl gap-[10px] bg-custom-gray mb-6">
+            {mapSize > 0 && 
+                <div className="join-item rounded-2xl bg-custom-gray">
+                    <button className="btn btn-square bg-custom-gray rounded-2xl text-xs border-0 disabled:bg-custom-gray shadow-none" onClick={() => {changeButtomMap(1)}}><img src="/Arrow.svg" alt="Arrow" className="w-[22px] h-[17px]"/></button>
+                </div>}
+            {
+                buttonMap.size > 0 ? (
+                    Array.from(buttonMap.entries()).slice(currentButtonStart, currentButtonEnd).map(([key, value]) => (
+                        <div className="join-item rounded-2xl bg-custom-gray">
+                            <button className="btn btn-square bg-custom-gray rounded-2xl text-xs border-0 disabled:bg-secondary-blue shadow-none disabled:text-white" disabled={buttonMap.get(key)} 
+                            onClick={() => {changeButtomMap(key + 1)}}>{key + 1}{console.log(key, value, currentNum)}</button>
+                        </div>  
+                    ))
+                ) : (
+                    <button className="btn bg-custom-gray rounded-2xl text-xs border-0 disabled:bg-secondary-blue shadow-none disabled:text-white" disabled="True">No upcoming events available</button>
+                )
+            }
+            {mapSize > 0 && 
+                <div className="join-item rounded-2xl bg-custom-gray">
+                    <button className="btn btn-square bg-custom-gray rounded-2xl text-xs border-0 disabled:bg-custom-gray shadow-none" onClick={() => {changeButtomMap(buttonMap.size)}}><img src="/Arrow-Left.svg" alt="Arrow" className="w-[22px] h-[17px]"/></button>
+                </div>}
+            
+        </div>
+    </div>
+    }
     const CurrentEventsRender = () => {
-        const eventCurr = events.filter((event) => new Date(event.startDate) - new Date() > 0);
+        const eventCurr = events.filter((event) => new Date(event.startDate) - new Date() < 0);
+        //buttonDisabledList.fill(false); 
         return <div className="w-full">
             <div className="bg-white p-6 tablet-lg:py-[70px] tablet-lg:px-[50px]">
-                {page === "one" && EventsRender(0,4, eventCurr)}
-                {page === "two" && EventsRender(4,8, eventCurr)}
-                {page === "three" && EventsRender(8,12, eventCurr)}
-                {page === "four" && EventsRender(20,24, eventCurr)}
+                {console.log(currentNum)}
+                {page === "one" && EventsRender(4*(currentNum),4*(currentNum) + 4, eventCurr)}
             </div>
-            <div className="w-full flex justify-center items-center pt-9 tablet-lg:bg-white">
-                    <div className="flex w-fit h-fit join rounded-2xl gap-[10px] bg-custom-gray mb-6">
-                        <div className="join-item rounded-2xl bg-custom-gray">
-                            <button className="btn btn-square bg-custom-gray rounded-2xl text-xs border-0 disabled:bg-secondary-blue shadow-none disabled:text-white" disabled={buttonDisabled1} onClick={setPage1}>1</button>
-                        </div>
-                        <div className="join-item rounded-2xl bg-custom-gray w-1/4">
-                            <button className="btn btn-square bg-custom-gray rounded-2xl text-xs border-0 disabled:bg-secondary-blue shadow-none disabled:text-white" disabled={buttonDisabled2} onClick={setPage2}>2</button>
-                        </div>
-                        <div className="join-item rounded-2xl bg-custom-gray w-1/4 h-9">
-                            <button className="btn btn-square bg-custom-gray rounded-2xl text-xs border-0 disabled:bg-secondary-blue shadow-none disabled:text-white" disabled={buttonDisabled3} onClick={setPage3}>3</button>
-                        </div>
-                        <div className="join-item rounded-2xl bg-custom-gray w-1/4 h-9">
-                            <button className="btn btn-square bg-custom-gray rounded-2xl text-xs border-0 disabled:bg-secondary-blue shadow-none disabled:text-white" disabled={buttonDisabled4} onClick={setPage4}>4</button>
-                        </div>
-                    </div>
-                </div>
+            <ButtonRender />
         </div>        
     }
 
     const PastEventsRender = () => { 
         const eventPast = events.filter((event) => new Date(event.startDate) - new Date() < 0);
         console.log(eventPast);
-        return <div className="bg-white p-6 tablet-lg:py-[70px] tablet-lg:px-[50px]">
-            {EventsRender(0,4, eventPast)}
-        </div>        
+        return <div className="w-full">
+            <div className="bg-white p-6 tablet-lg:py-[70px] tablet-lg:px-[50px]">
+                {console.log(currentNum)}
+                {page === "one" && EventsRender(4*(currentNum),4*(currentNum) + 4, eventPast)}
+            </div>
+            <ButtonRender />
+        </div>         
     }
 
 
@@ -191,6 +228,7 @@ export default function EventsPageComponent() {
         return <div className="text-center mt-8 text-red-500">{error}</div>;
     return(
     <div className = "Events Page Component">
+            
             <div className="bg-custom-yellow p-6 desktop:px-[158px]">
                 <div className="w-full flex justify-center items-center"> 
                     <div className="w-full flex">
