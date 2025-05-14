@@ -11,6 +11,9 @@ import DashboardPage from "./pages/private/DashboardPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import PublicLayout from "./layouts/PublicLayout";
+import AboutUs from "./pages/AboutUs";
+import Membership from "./pages/Membership";
+import Events from "./pages/Events";
 import PublicPage1 from "./pages/PublicPage1";
 import PublicPage2 from "./pages/PublicPage2";
 import AuthLayout from "./layouts/AuthLayout";
@@ -29,8 +32,9 @@ import ManageEvent from "./pages/private/admin/ManageEventPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import AnnouncementsPage from "./pages/private/Announcements";
 import ManageAnnouncements from "./pages/private/admin/ManageAnnouncementsPage";
+import ManageMessages from "./pages/private/admin/ManageMessages";
 
-
+import AdminPage from "./pages/private/admin/AdminPage";
 
 
 //Not logged in? You can't go to the protected routes
@@ -49,6 +53,8 @@ const ProtectRoute = ({ children }) => {
   if (user.role === "banned") {
     return <Navigate to="/account-deactivated" replace />;
   }
+
+
 
   return children;
 };
@@ -76,6 +82,7 @@ const ProtectAdminRoute = ({ children }) => {
     return <Navigate to="/dashboard" replace />;
   }
 
+
   return children;
 };
 
@@ -98,6 +105,11 @@ const App = () => {
         <Route path="/" element={<WelcomePage />} />
         <Route path="/page1" element={<PublicPage1 />} />
         <Route path="/page2" element={<PublicPage2 />} />
+        
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/membership" element={<Membership />} />
+        <Route path="/public_events" element={<Events />} />
+
         <Route path="/account-pending" element={<AccountApprovalPending />} />
         <Route
           path="/account-deactivated"
@@ -210,6 +222,24 @@ const App = () => {
           element={
             <ProtectAdminRoute>
               <ManageAnnouncements />
+            </ProtectAdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin/messages"
+          element={
+            <ProtectAdminRoute>
+              <ManageMessages />
+            </ProtectAdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin/adminpage"
+          element={
+            <ProtectAdminRoute>
+              <AdminPage />
             </ProtectAdminRoute>
           }
         />

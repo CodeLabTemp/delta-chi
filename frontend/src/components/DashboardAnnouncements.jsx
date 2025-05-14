@@ -33,13 +33,13 @@ const DashboardAnnouncements = () => {
   }
 
   return (
-    <div className="mt-6 w-full max-w-4xl bg-white p-6 rounded-lg shadow-md">
+    <div className="mt-6 w-full max-w-4xl p-6 rounded-lg">
       {announcements?.length > 0 ? (
         <ul className="space-y-4">
           {announcements.map((announcement) => (
-            <li key={announcement._id} className="border-b pb-2">
-              <h3 className="text-lg font-semibold">{announcement.title}</h3>
-              <p className="text-gray-600">{announcement.content}</p>
+            <li key={announcement._id} className="w-full rounded-2xl bg-custom-yellow gap-4 p-3 text-[#11375C] font-montserrat">
+              <h3 className="text-lg font-semibold">{announcement.title}:</h3>
+              <p className="text-[#11375C] font-montserrat">{announcement.content}</p>
             </li>
           ))}
         </ul>
