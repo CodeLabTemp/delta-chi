@@ -3,11 +3,9 @@ import axios from "axios";
 import { BASE_URL } from "@/utils/constants";
 
 export default function PublicContact() {
-    const [values, setValues] = useState({
-        name: '',
-        email: '',
-        message: ''
-    })
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
 
     const [showError, setShowError] = useState(false)
     const [validNameState, setValidNameState] = useState(true)
@@ -16,10 +14,6 @@ export default function PublicContact() {
 
     const [sendStatus, setSendStatus] = useState('before')
     const [buttonDisabled, setButtonDisabled] = useState(false)
-
-    const handleChanges = (e) => {
-        setValues({...values,[e.target.name]:e.target.value})
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -32,20 +26,20 @@ export default function PublicContact() {
         var emailTemp = true; 
         var messageTemp = true; 
 
-        if(!emailVal.test(values.email)) {
+        if(!emailVal.test(email)) {
             error = true;
             emailTemp = false;  //working on this area 
         } else {
             emailTemp = true; 
         }
 
-        if(values.name.length < 1 || !/[\w]+/.test(values.name)){
+        if(name.length < 1 || !/[\w]+/.test(name)){
             error = true; 
             nameTemp = false; 
         }else {
             nameTemp = true; 
         }
-        if(values.message.length < 10 || !/[\w]+/.test(values.message)){
+        if(message.length < 10 || !/[\w]+/.test(message)){
             error = true; 
             messageTemp = false;
         }else {
@@ -82,8 +76,21 @@ export default function PublicContact() {
         }, 2000);
         disableButton(); 
 
-        
-        console.log(values)
+        try {
+            const response = axios.post(BASE_URL + "/api/contact/", 
+              {
+                name, 
+                email, 
+                message
+              },
+              {withCredentials: true}
+            );
+        } catch (error) {
+            throw error; 
+        }
+        console.log(name)
+        console.log(email)
+        console.log(message)
     }
 
     const setError = () => {
@@ -135,9 +142,9 @@ export default function PublicContact() {
                 <form className="flex flex-col w-full justify-center items-center" onSubmit={handleSubmit}>
                     <div className="w-full text-left px-1">{ showError && <RenderError />}</div>
                     <div className="w-full grid grid-cols-2 justify-center items-center gap-x-4 gap-y-[13px]">
-                        <input type ="text" name="name" id="name" placeholder="Name" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4" onChange={(e) => handleChanges(e)} required value={values.name}/>
-                        <input type ="text" name="email" id="email" placeholder="Email" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4" onChange={(e) => handleChanges(e)} required value={values.email}/>
-                        <textarea name="message" id="message" placeholder="Message" rows="10" cols="30" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4 col-span-2" onChange={(e) => handleChanges(e)} required value={values.message}/>
+                        <input type ="text" name="name" id="name" placeholder="Name" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4" onChange={(e) => setName(e.target.value)} required value={name}/>
+                        <input type ="text" name="email" id="email" placeholder="Email" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4" onChange={(e) => setEmail(e.target.value)} required value={email}/>
+                        <textarea name="message" id="message" placeholder="Message" rows="10" cols="30" className="bg-white rounded-lg border-custom-gray border text-[#5B6665] p-4 col-span-2" onChange={(e) => setMessage(e.target.value)} required value={message}/>
                     </div>
                     
                     <button type="sumbit"className="w-[155px] h-10 bg-primary-yellow text-black font-bold py-2 px-4 mt-8 justify-center items-center text-center disabled:bg-custom-gray" id="sumbitButton" disabled={buttonDisabled}>Send Message</button>

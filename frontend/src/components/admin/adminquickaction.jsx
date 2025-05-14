@@ -1,4 +1,6 @@
+
 import { Link } from "react-router-dom";
+
 
 export default function QuickActions() {
     return (
@@ -21,6 +23,7 @@ export default function QuickActions() {
                                 />
                             </button>
                         </Link>
+
                         <Link to="/admin/events" className="w-full">
                             <button className="w-full h-[198px] tablet-sm:h-[262px] flex flex-col items-center justify-center bg-transparent hover:bg-custom-gray text-secondary-blue font-semibold py-8 px-4 border border-secondary-blue mt-8 gap-4">
                                 <p className="leading-[24px] font-extrabold font-montserrat tablet-sm:font-lora tablet-sm:font-bold tablet-sm:leading-[41px] tablet-sm:text-[32px]">

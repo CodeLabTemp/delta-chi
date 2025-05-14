@@ -15,7 +15,7 @@ export default function PublicAbout() {
             <div className="w-full h-auto mobile-lg:h-[265px] tablet:h-[265px] desktop:h-[241px] tablet:w-[409.5px] desktop:w-[524px] text-center tablet:text-left">
                 <h1 className="mb-8 text-primary-red font-bold text-[32px] font-lora leading-[41px]">Building a better future</h1>
                 <p className="text-base">Lorem ipsum dolor sit amet consectetur. Congue enim eleifend quis scelerisque a. Mi sit lacinia id sed id ullamcorper. Fermentum vulputate mus at iaculis sociis vitae. Mauris nulla sagittis ac euismod malesuada cras in.</p>
-                <button className="bg-transparent hover:bg-custom-gray text-secondary-blue font-semibold py-2 px-4 border border-secondary-blue mt-8">About Us</button>
+                <Link to="/aboutus"><button className="bg-transparent hover:bg-custom-gray text-secondary-blue font-semibold py-2 px-4 border border-secondary-blue mt-8">About Us</button></Link>
             </div>
         </div>
   </div>
