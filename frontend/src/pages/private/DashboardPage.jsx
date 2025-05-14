@@ -1,5 +1,6 @@
 import DashboardAnnouncements from "@/components/DashboardAnnouncements";
 import EventCalendar from "@/components/EventCalendar";
+import { useAuthStore } from "@/store/authStore";
 import EventsDashboard from "@/components/admin/admineventdashboard";
 import PendingRequests from "@/components/admin/adminpendingrequests";
 import QuickActions from "@/components/admin/adminquickaction";
@@ -22,7 +23,6 @@ const DashboardPage = () => {
 
       <div className="mt-6 w-full max-w-4xl bg-white p-6 rounded-lg">
         <EventsDashboard />
-        <EventCalendar />
       </div>
     </div>
   );

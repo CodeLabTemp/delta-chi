@@ -1,10 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuthStore } from "@/store/authStore";
+import MemberImage from "@/components/MemberImage";
+
 
 const AdminSideBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuthStore();
+
+  const roleDisplay = user.role === "admin" ? "Admin" : user.role === "moderator" ? "Moderator" : "Member";
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,7 +30,6 @@ const AdminSideBar = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" onClick={() => setIsMenuOpen(false)}></div>
       )}
 
-      {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-screen w-64 bg-[#F1BD19] text-black z-50 pt-6 transition-transform drop-shadow-lg rounded-r-xl ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -37,11 +41,19 @@ const AdminSideBar = () => {
 
         {/* Profile Section */}
         <div className="flex flex-col items-center mb-4">
-          <img src="/avatar-jessica.jpeg" alt="Profile" className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31]" />
+          {user.profileImage ? (
+            <img
+              src={user.profileImage}
+              alt="Profile"
+              className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31] bg-white"
+            />
+          ) : (
+            <MemberImage />
+          )}
           <p className="mt-2 text-lg">{user.firstname}</p>
-          <p className="text-sm text-[#CA3D31] font-semibold">Admin</p>
+          <p className="text-sm text-[#CA3D31] font-semibold">{roleDisplay}</p>
         </div>
-
+        
         <hr className="w-full border-t border-white" />
 
         {/* Sidebar Links */}
@@ -49,9 +61,9 @@ const AdminSideBar = () => {
           <Link className="block py-2 w-full hover:font-bold" to="/admin/adminpage">Dashboard</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profiles">Members</Link>
           <Link className="block py-2 w-full hover:font-bold" to="admin/permissions">Permissions</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="admin/announcements">Announcements</Link>          
+          <Link className="block py-2 w-full hover:font-bold" to="admin/announcements">Announcements</Link>
           <Link className="block py-2 w-full hover:font-bold" to="admin/events">Events</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Settings</Link>
+          <Link className="block py-2 w-full hover:font-bold" to="admin/messages">Messages</Link>                    
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Edit My Profile</Link>
         </ul>
         <hr className="w-full border-t border-white mt-4" />

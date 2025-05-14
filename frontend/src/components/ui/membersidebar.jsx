@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuthStore } from "@/store/authStore";
+import MemberImage from "@/components/MemberImage";
 
 const MemberSideBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,7 @@ const MemberSideBar = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1000) {
-        setIsMenuOpen(false); // Auto-close sidebar when resizing to larger screens
+        setIsMenuOpen(false);
       }
     };
 
@@ -28,7 +29,6 @@ const MemberSideBar = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" onClick={() => setIsMenuOpen(false)}></div>
       )}
 
-      {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-screen w-64 bg-[#F1BD19] z-50 pt-6 transition-transform drop-shadow-lg rounded-r-xl ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -38,22 +38,28 @@ const MemberSideBar = () => {
           ✕
         </button>
 
-        {/* Profile Section */}
         <div className="flex flex-col items-center mb-4">
-          <img src="/avatar-jessica.jpeg" alt="Profile" className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31]" />
+          {user.profileImage ? (
+            <img
+              src={user.profileImage}
+              alt="Profile"
+              className="w-20 h-20 rounded-full object-cover border-4 border-[#CA3D31] bg-white"
+            />
+          ) : (
+            <MemberImage />
+          )}
           <p className="mt-2 text-lg">{user.firstname}</p>
-          <p className="text-sm text-[#CA3D31]">{roleDisplay}</p>
+          <p className="text-sm text-[#CA3D31] font-semibold">{roleDisplay}</p>
         </div>
 
         <hr className="w-full border-t border-white" />
 
-        {/* Sidebar Links */}
         <ul className="w-full text-center space-y-4 mt-4 pb-4">
           <Link className="block py-2 w-full hover:font-bold" to="/dashboard">Dashboard</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/announcements">Announcements</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/events">Events</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Calendar</Link>
-          <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Omega Fi</Link>
+          <a className="block py-2 w-full hover:font-bold" href="https://www.omegafi.com/" target="_blank" rel="noopener noreferrer">Omega Fi</a>
           <Link className="block py-2 w-full hover:font-bold" to="/profiles">Member Directory</Link>
           <Link className="block py-2 w-full hover:font-bold" to="/profile/edit">Settings</Link>
         </ul>
@@ -67,7 +73,6 @@ const MemberSideBar = () => {
         </div>
       </div>
 
-      {/* Hamburger Icon */}
       {!isMenuOpen && (
         <div className="fixed top-4 left-4 lg:hidden z-50">
           <button className="btn btn-ghost btn-circle" onClick={() => setIsMenuOpen(true)}>
