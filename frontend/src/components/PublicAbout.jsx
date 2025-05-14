@@ -6,7 +6,7 @@ export default function PublicAbout() {
   <div className = "About">
         <div className="w-full mobile:h-[680px] tablet:h-[463px] flex flex-col row-start-2 items-center gap-8 tablet:gap-[72px] px-6 tablet:px-[50px] desktop:px-[160px] py-8 tablet:py-[72px] justify-center tablet:flex-row bg-custom-yellow text-custom-black font-montserrat">
             <img
-                src="/aboutpic.png"
+                src="/aboutpic.jpg"
                 width={500}
                 height={500}
                 alt="Picture of the author"

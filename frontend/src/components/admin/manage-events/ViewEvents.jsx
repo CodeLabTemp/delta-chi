@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
 const ITEMS_PER_PAGE = 6;
-const DEFAULT_IMAGE = "/public-event-default.jpeg";
+const DEFAULT_IMAGE = "/event.jpg";
 
 const ViewEvents = () => {
   const { user } = useAuthStore();

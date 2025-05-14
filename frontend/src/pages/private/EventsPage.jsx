@@ -6,7 +6,7 @@ import { format } from "date-fns";
 import ReactPaginate from "react-paginate";
 
 const ITEMS_PER_PAGE = 6;
-const DEFAULT_IMAGE = "/public-event-default.jpeg";
+const DEFAULT_IMAGE = "/event.jpg";
 
 const EventsPage = () => {
   const { user } = useAuthStore();

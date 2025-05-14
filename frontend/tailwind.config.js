@@ -30,6 +30,7 @@ export default {
 			'custom-gray': "#E0E0E0",
 			'custom-black': "#333333",
 			'footer-back': "#5B6665",
+			'white':"#FFFFFF",
 
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

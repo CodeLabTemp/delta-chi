@@ -17,10 +17,10 @@ export default function PublicExecutives({ executives }) {
                 <img
                   src={executive.memberImage}
                   alt={executive.memberName}
-                  className="w-56 h-56 rounded-full object-cover mt-4 mb-6"
+                  className="w-56 h-56 rounded-full object-cover object-top mt-4 mb-6"
                 />
                 <h2 className="font-lora font-semibold text-xl mt-4">
-                  {executive.memberName}
+                  {/* {executive.memberName} */}
                 </h2>
                 <p className="font-lora text-md mt-1 mb-4 text-gray-600">
                   {executive.memberRank}
