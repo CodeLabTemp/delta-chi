@@ -101,16 +101,20 @@ const PublicNavbar = () => {
             </Link>
           </li>
           <li>
+            {/* Will add this once we hear back from the DC mebers */}
+            {/* for now it links to nothing */}
             <Link
-              to="/page1"
+              to="/"
               className="font-montserrat font-semibold text-black text-base px-4 py-2"
             >
               Alumni
             </Link>
           </li>
           <li>
+            {/* Will add this once we hear back from the DC mebers */}
+            {/* for now it links to nothing */}
             <Link
-              to="/page2"
+              to="/"
               className="font-montserrat font-semibold text-black text-base px-4 py-2"
             >
               Donate
@@ -146,7 +150,7 @@ const PublicNavbar = () => {
           </li>
           <li>
             <Link
-              to="/page1"
+              to="/aboutus"
               className="font-montserrat font-semibold text-black text-base"
             >
               About Us
@@ -154,7 +158,7 @@ const PublicNavbar = () => {
           </li>
           <li>
             <Link
-              to="/page2"
+              to="/membership"
               className="font-montserrat font-semibold text-black text-base"
             >
               Membership
@@ -162,7 +166,7 @@ const PublicNavbar = () => {
           </li>
           <li>
             <Link
-              to="/page1"
+              to="/public_events"
               className="font-montserrat font-semibold text-black text-base"
             >
               Events
@@ -170,7 +174,7 @@ const PublicNavbar = () => {
           </li>
           <li>
             <Link
-              to="/page2"
+              to="/"
               className="font-montserrat font-semibold text-black text-base"
             >
               Alumni
@@ -178,7 +182,7 @@ const PublicNavbar = () => {
           </li>
           <li>
             <Link
-              to="/page1"
+              to="/"
               className="font-montserrat font-semibold text-black text-base"
             >
               Donate
