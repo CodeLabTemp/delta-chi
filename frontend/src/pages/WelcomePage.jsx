@@ -7,15 +7,15 @@ import PublicExecutives from "@/components/PublicExecutives";
 
 const WelcomePage = () => {
   let pictures = [
-    { photoName: "Photo1", photoSource: "/aboutpic.png" },
-    { photoName: "Photo2", photoSource: "/aboutpic.png" },
-    { photoName: "Photo3", photoSource: "/aboutpic.png" },
-    { photoName: "Photo4", photoSource: "/aboutpic.png" },
+    { photoName: "Photo1", photoSource: "/aboutpic.jpg" },
+    { photoName: "Photo2", photoSource: "/DC_header.jpg" },
+    { photoName: "Photo3", photoSource: "/event.jpg" },
+    { photoName: "Photo4", photoSource: "/membership.jpg" },
   ];
 
   const evBoard = [
     {
-      eventImage: "/headerphoto.jpg",
+      eventImage: "/event.jpg",
       eventName: "Main Event",
       eventDate: "November 19, 2024",
       eventLocation: "Location A",
@@ -25,7 +25,7 @@ const WelcomePage = () => {
       isMain: true, // Mark the main event
     },
     {
-      eventImage: "/headerphoto.jpg",
+      eventImage: "/event.jpg",
       eventName: "Event 1",
       eventDate: "November 19, 2024",
       eventLocation: "Location B",
@@ -33,7 +33,7 @@ const WelcomePage = () => {
       eventDescription: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,",
     },
     {
-      eventImage: "/headerphoto.jpg",
+      eventImage: "/event.jpg",
       eventName: "Event 2",
       eventDate: "December 1, 2024",
       eventLocation: "Location C",
@@ -41,7 +41,7 @@ const WelcomePage = () => {
       eventDescription: "qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?",
     },
     {
-      eventImage: "/headerphoto.jpg",
+      eventImage: "/event.jpg",
       eventName: "Event 3",
       eventDate: "January 5, 2025",
       eventLocation: "Location D",
@@ -54,22 +54,22 @@ const WelcomePage = () => {
     {
       memberRank: "President",
       memberName: "Alex Nguyen",
-      memberImage: "/avatar-jessica.jpeg",
+      memberImage: "/member1.jpg",
     },
     {
       memberRank: "Vice President",
       memberName: "Leo Lipshutz",
-      memberImage: "/avatar-jessica.jpeg",
+      memberImage: "/member2.jpg",
     },
     {
       memberRank: "Secretary",
       memberName: "Nolan Dokidis",
-      memberImage: "/avatar-jessica.jpeg",
+      memberImage: "/member3.jpg",
     },
     {
       memberRank: "Treasurer",
       memberName: "Jaylon Dias",
-      memberImage: "/avatar-jessica.jpeg",
+      memberImage: "/member4.jpg",
     },
   ];
 

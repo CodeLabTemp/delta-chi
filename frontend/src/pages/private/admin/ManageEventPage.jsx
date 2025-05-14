@@ -9,7 +9,7 @@ import { format } from "date-fns";
 import RSVPList from "@/components/admin/manage-events/RSVPList";
 import EventImageUploader from "@/components/admin/EventImageUploader";
 
-const DEFAULT_IMAGE = "/public-event-default.jpeg";
+const DEFAULT_IMAGE = "/event.jpg";
 
 const ManageEvent = () => {
   const { user } = useAuthStore();
