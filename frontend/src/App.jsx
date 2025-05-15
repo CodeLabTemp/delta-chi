@@ -14,8 +14,6 @@ import PublicLayout from "./layouts/PublicLayout";
 import AboutUs from "./pages/AboutUs";
 import Membership from "./pages/Membership";
 import Events from "./pages/Events";
-import PublicPage1 from "./pages/PublicPage1";
-import PublicPage2 from "./pages/PublicPage2";
 import AuthLayout from "./layouts/AuthLayout";
 import WelcomePage from "./pages/WelcomePage";
 import AccountApprovalPending from "./pages/AccountApprovalPending";
@@ -103,8 +101,6 @@ const App = () => {
       {/* Public Routes */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<WelcomePage />} />
-        <Route path="/page1" element={<PublicPage1 />} />
-        <Route path="/page2" element={<PublicPage2 />} />
         
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/membership" element={<Membership />} />

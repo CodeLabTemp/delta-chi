@@ -8,7 +8,7 @@ export default function PublicHeader() {
       <div
         className="absolute inset-0 bg-cover bg-center brightness-75"
         style={{
-          backgroundImage: "url('/headerphoto.jpg')",
+          backgroundImage: "url('/DC_header.jpg')",
         }}
       ></div>
 

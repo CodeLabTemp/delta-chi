@@ -62,7 +62,7 @@ export default function EventsDashboard() {
                         <div className="w-full flex flex-col rounded-2xl gap-4 tablet:flex-row">
                             <div className="w-full flex rounded-2xl gap-4 tablet:w-2/3">
                                 <div className="flex flex-col w-1/2 gap-2">
-                                    <img src="/aboutpic.png" alt="" className="w-full rounded-2xl" />
+                                    <img src="/aboutpic.jpg" alt="" className="w-full rounded-2xl" />
                                 </div>
                                 <div className="flex flex-col w-1/2 gap-2">
                                     <h1 className="text-[#333333] font-semibold text-2xl font-lora leading-[31px]">{event.title}</h1>

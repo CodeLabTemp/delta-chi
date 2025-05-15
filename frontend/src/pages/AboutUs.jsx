@@ -1,5 +1,5 @@
 const AboutUs = () => {
-    console.log("AboutUs.jsx fired");
+    
     return <div>
       <div className="bg-[url(/banner.png)] shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] desktop:h-[300px] tablet-sm:h-[230px] mobile:h-[180px] h-[93px] bg-no-repeat bg-left bg-cover desktop:bg-contain flex flex-row bg-primary-yellow">
         <div className="w-3/6 tablet-sm:w-7/12 tablet-lg:w-6/12"></div>
@@ -14,7 +14,7 @@ const AboutUs = () => {
             </p>
           </div>
           <img
-              src="/value1.jpg"
+              src="/aboutpic.jpg"
               alt="Picture of the author"
               className="tablet:w-1/2 w-full h-[319px] tablet-sm:h-auto tablet:order-last order-first object-cover"
             />

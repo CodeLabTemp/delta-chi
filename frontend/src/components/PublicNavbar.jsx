@@ -21,7 +21,7 @@ const PublicNavbar = () => {
 
 
   return (
-    <div className="relative z-50 bg-base-100">
+    <div className="relative z-50 bg-white">
     <div className="navbar px-4 md:px-6 py-7 w-full overflow-x-hidden flex justify-between">
       {/* (Mobile/Tablet View) */}
       <div className="w-auto lg:hidden">

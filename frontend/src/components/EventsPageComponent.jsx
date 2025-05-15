@@ -130,7 +130,7 @@ export default function EventsPageComponent() {
     const IndividualEvent = (event) => {
         return <div key={event._id} className="w-full flex-row tablet-lg:flex rounded-2xl gap-4" onClick={() => openModal(event)}>
             <div className="flex flex-col gap-2 tablet-lg:w-1/2 h-[262px]">
-                <img src={event.hasOwnProperty("image") && event.image != null && event.image.hasOwnProperty("url") ? (event.image.url) : ("/aboutpic.png")} alt="" className="w-full rounded-2xl h-full object-cover" />
+                <img src={event.hasOwnProperty("image") && event.image != null && event.image.hasOwnProperty("url") ? (event.image.url) : ("/aboutpic.jpg")} alt="" className="w-full rounded-2xl h-full object-cover" />
             </div>
             <div className="flex flex-col gap-2 tablet-lg:w-1/2 tablet-lg:h-[262px] text-wrap max-w-full" >
                 <h1 className="text-[#333333] font-semibold text-2xl font-lora leading-[31px]">{event.title}</h1>
@@ -258,7 +258,7 @@ export default function EventsPageComponent() {
 
                     {/* Event Image */}
                     {selectedEvent.image && selectedEvent.image != null &&  <img
-                        src={selectedEvent.image.hasOwnProperty("url") ? (selectedEvent.image.url) : ("/aboutpic.png")}
+                        src={selectedEvent.image.hasOwnProperty("url") ? (selectedEvent.image.url) : ("/aboutpic.jpg")}
                         alt={selectedEvent.eventName}
                         className="w-full h-48 object-cover rounded-lg mb-4"
                     />}
